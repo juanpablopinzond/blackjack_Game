@@ -10,14 +10,27 @@
 
 <body>
     <section class="wrapper">
+        <section class="info_container">
+            <h1>Player Data</h1>
+            <h2>Insert your personal Information to <em><span>PLAY</span></em> 🎮</h2>
+            <div class="data_box">
+                <label for="name">Name: </label>
+                <input type="text" id="name_input" name="name">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName_input" name="lastName">
+                <label for="age">Age:</label>
+                <input type="number" id="age_input" name="age">
+                <button id="data_btn">ADD PLAYER DATA</button>
+            </div>
+        </section>
         <section class="container">
             <div class="game_info">
                 <h1>BlackJack</h1>
-                <h2><em>You've got <span>BlackJack!</span></em></h2>
+                <h2><em>You've got <span>BlackJack!</span></em> 💲</h2>
                 <p id="displayCards">Cards: </p>
                 <p id="diplayResult">Sum: </p>
                 <div id="player_box">
-                    <h3>Player Info</h3>
+                    <h3>Player</h3>
                     <p id="player_name">Name: </p>
                     <p id="player_lstName">Last Name:</p>
                     <p id="player_age">Age: </p>

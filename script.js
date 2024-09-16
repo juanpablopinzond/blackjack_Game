@@ -12,11 +12,8 @@ let totalOfReward = moneyEarned + moneyForWinBlackjack;
 const playerName = document.getElementById("player_name");
 const playerLasName = document.getElementById("player_lstName");
 const playerAge = document.getElementById("player_age");
-let user = {
-    name: null,
-    lastName: null,
-    age: null
-};
+
+
 
 const namePattern = /^[a-zA-Z\s]+$/; //Expresion regular para permitir solo letras y espacios
 const numberPatterns = /^[0-9]+$/; //Expresion regular para permitir solo numeros
@@ -24,25 +21,38 @@ const numberPatterns = /^[0-9]+$/; //Expresion regular para permitir solo numero
 //Se ejecutan los do mientras se ingresen valores correctamente,
 //si se ingresa cadena vacia, solo espacios o numeros el bucle ejecuta el do.
 
-do {
-    user.name = window.prompt("Insert your name");
-} while (user.name === null || user.name.trim() === "" || !namePattern.test(user.name));
+// do {
+//     user.name = window.prompt("Insert your name");
+// } while (user.name === null || user.name.trim() === "" || !namePattern.test(user.name));
 
-do {
-    user.lastName = window.prompt("Insert your last name");
-} while (user.lastName === null || user.lastName.trim() === "" || !namePattern.test(user.lastName));
+// do {
+//     user.lastName = window.prompt("Insert your last name");
+// } while (user.lastName === null || user.lastName.trim() === "" || !namePattern.test(user.lastName));
 
-do {
-    user.age = window.prompt("Insert your age");
-} while (user.age === null || user.name.trim() === "" || !numberPatterns.test(user.age));
+// do {
+//     user.age = window.prompt("Insert your age");
+// } while (user.age === null || user.name.trim() === "" || !numberPatterns.test(user.age));
 
-
-if (user.name !== "" && user.lastName !== "" && user.age !== "") {
-    playerName.textContent = `Name: ${user.name}`;
-    playerLasName.textContent = `Last Name: ${user.lastName}`;
-    playerAge.textContent = `Age: ${user.age}`;
+function addPlayerInfo() {
+    const nameInput = document.getElementById("name_input").value;
+    const lastNameInput = document.getElementById("lastName_input").value;
+    const ageInput = document.getElementById("age_input").value;
+    if (namePattern.test(nameInput) && namePattern.test(lastNameInput) && numberPatterns.test(ageInput)) {
+        playerName.textContent = `Name: ${nameInput}`;
+        playerLasName.textContent = `Last Name: ${lastNameInput}`;
+        playerAge.textContent = `Age: ${ageInput}`;
+        displayStartGameMessage();
+    } else {
+        alert("Some data is insert wrong, please try again")
+    }
 }
 
+const addDataBtn = document.getElementById("data_btn");
+addDataBtn.addEventListener("click", addPlayerInfo);
+
+function displayStartGameMessage() {
+    alert("Now, Push the START GAME BUTTON!");
+}
 
 function startGame() {
     const firstCard = getRandomCard();
@@ -76,7 +86,7 @@ function renderGame() {
     } else if (sumCards === 21) {
         displaySuggestionOnScreen.textContent = `You got BackJack, you win! 😎`;
         hasBlackJack = true
-        displayReward.textContent = `you take the ${moneyEarned}$ and ${moneyForWinBlackjack}$ for winning BlackJack = ${totalOfReward}$`;
+        displayReward.textContent = `you take the ${moneyEarned}$ you got as a first move and ${moneyForWinBlackjack}$ for winning BlackJack = ${totalOfReward}$`;
     } else {
         displaySuggestionOnScreen.textContent = `Game Over, you Lost! 😧`
         isAlive = false
