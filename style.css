@@ -1,5 +1,5 @@
 @font-face {
-    src: url("./images/BLACKJAC.TTF");
+    src: url("./font/BLACKJAC.TTF");
     font-family: Blackjack;
 }
 
@@ -29,7 +29,7 @@ body {
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    height: 80vh;
+    height: 95vh;
     width: 50%;
     backdrop-filter: blur(50px);
     box-shadow: 2px 2px 10px 3px black;
@@ -76,8 +76,24 @@ h2 {
 p {
     color: #cffcff;
     text-shadow: 2px 2px 4px black;
+    font-size: 15px;
 }
 
 span {
     border-bottom: 4px solid black;
+}
+
+h3 {
+    color: #358600;
+    text-shadow: 2px 2px 4px black;
+    font-size: 30px;
+    margin-top: 10px
+}
+
+#player_box {
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 3px black;
+    text-align: center;
 }

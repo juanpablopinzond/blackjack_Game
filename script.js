@@ -1,18 +1,50 @@
-let displayCardsOnScreen = document.getElementById("displayCards");
-let displayResultOnScreen = document.getElementById("diplayResult");
-let displaySuggestionOnScreen = document.getElementById("game_suggestion");
-let displayReward = document.getElementById("game_reward");
+const displayCardsOnScreen = document.getElementById("displayCards");
+const displayResultOnScreen = document.getElementById("diplayResult");
+const displaySuggestionOnScreen = document.getElementById("game_suggestion");
+const displayReward = document.getElementById("game_reward");
 let cardsArray = []
 let sumCards = 0;
 let isAlive = true;
 let hasBlackJack = false;
 let moneyEarned = Math.floor(Math.random() * 100 + 100);
 let moneyForWinBlackjack = 500;
-let totalOfReward = moneyEarned + moneyForWinBlackjack
+let totalOfReward = moneyEarned + moneyForWinBlackjack;
+const playerName = document.getElementById("player_name");
+const playerLasName = document.getElementById("player_lstName");
+const playerAge = document.getElementById("player_age");
+let user = {
+    name: null,
+    lastName: null,
+    age: null
+};
+
+const namePattern = /^[a-zA-Z\s]+$/; //Expresion regular para permitir solo letras y espacios
+const numberPatterns = /^[0-9]+$/; //Expresion regular para permitir solo numeros
+
+//Se ejecutan los do mientras se ingresen valores correctamente,
+//si se ingresa cadena vacia, solo espacios o numeros el bucle ejecuta el do.
+
+do {
+    user.name = window.prompt("Insert your name");
+} while (user.name === null || user.name.trim() === "" || !namePattern.test(user.name));
+
+do {
+    user.lastName = window.prompt("Insert your last name");
+} while (user.lastName === null || user.lastName.trim() === "" || !namePattern.test(user.lastName));
+
+do {
+    user.age = window.prompt("Insert your age");
+} while (user.age === null || user.name.trim() === "" || !numberPatterns.test(user.age));
+
+
+if (user.name !== "" && user.lastName !== "" && user.age !== "") {
+    playerName.textContent = `Name: ${user.name}`;
+    playerLasName.textContent = `Last Name: ${user.lastName}`;
+    playerAge.textContent = `Age: ${user.age}`;
+}
+
 
 function startGame() {
-    let isAlive = true;
-    let hasBlackJack = false
     const firstCard = getRandomCard();
     const secondCard = getRandomCard();
     cardsArray.push(firstCard, secondCard);
@@ -39,16 +71,16 @@ function renderGame() {
     }
     if (sumCards < 21) {
         displaySuggestionOnScreen.textContent = `Do you want draw a new card? 🤔`;
-        displayReward.textContent = "Juan: " + `got ${moneyEarned}$ as a first move`;
+        displayReward.textContent = `You got ${moneyEarned}$ as a first move`;
         isAlive = true;
     } else if (sumCards === 21) {
         displaySuggestionOnScreen.textContent = `You got BackJack, you win! 😎`;
         hasBlackJack = true
-        displayReward.textContent = "Juan: " + `you take the ${moneyEarned} and ${moneyForWinBlackjack} for winning BlackJack = ${totalOfReward}`;
+        displayReward.textContent = `you take the ${moneyEarned}$ and ${moneyForWinBlackjack}$ for winning BlackJack = ${totalOfReward}$`;
     } else {
         displaySuggestionOnScreen.textContent = `Game Over, you Lost! 😧`
         isAlive = false
-        displayReward.textContent = "Juan: " + "lost His money";
+        displayReward.textContent = "You lost all the money";
     }
 }
 
