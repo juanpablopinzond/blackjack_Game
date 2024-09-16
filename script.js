@@ -33,6 +33,7 @@ const numberPatterns = /^[0-9]+$/; //Expresion regular para permitir solo numero
 //     user.age = window.prompt("Insert your age");
 // } while (user.age === null || user.name.trim() === "" || !numberPatterns.test(user.age));
 
+
 function addPlayerInfo() {
     const nameInput = document.getElementById("name_input").value;
     const lastNameInput = document.getElementById("lastName_input").value;
@@ -52,6 +53,9 @@ addDataBtn.addEventListener("click", addPlayerInfo);
 
 function displayStartGameMessage() {
     alert("Now, Push the START GAME BUTTON!");
+    document.getElementById("name_input").value = "";
+    document.getElementById("lastName_input").value = "";
+    document.getElementById("age_input").value = "";
 }
 
 function startGame() {
