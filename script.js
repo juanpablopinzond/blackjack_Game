@@ -14,7 +14,6 @@ const playerLasName = document.getElementById("player_lstName");
 const playerAge = document.getElementById("player_age");
 
 
-
 const namePattern = /^[a-zA-Z\s]+$/; //Expresion regular para permitir solo letras y espacios
 const numberPatterns = /^[0-9]+$/; //Expresion regular para permitir solo numeros
 
